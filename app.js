@@ -4,7 +4,7 @@ const presets = {
     beat: 10,
     carrier: 440,
     mode: "binaural",
-    description: "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。",
+    description: "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。",
   },
   beta: {
     name: "Beta",
@@ -25,14 +25,14 @@ const presets = {
     beat: 6,
     carrier: 360,
     mode: "binaural",
-    description: "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。",
+    description: "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。",
   },
   delta: {
     name: "Delta",
     beat: 2.5,
     carrier: 280,
     mode: "pulse",
-    description: "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。",
+    description: "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。",
   },
   focus: {
     name: "Pure Tone",
@@ -168,6 +168,18 @@ const usageSituationAdditions = {
 };
 
 Object.entries(usageSituationAdditions).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
+const finalUsageSituationCopy = {
+  en: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "Quiet pauses and organizing thoughts. Suitable for breathing practice and preparation before meditation.", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "Suitable for mind-body relaxation practice, sitting quietly, and aimless mental downtime.", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "Suitable for slowly and gently reducing outside stimulation and gradually easing awareness into rest." },
+  "zh-CN": { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "安静停顿、整理思绪。适合呼吸练习与冥想前准备。", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "适合身心放松练习、静坐、脑袋放空且无特殊目的的情况。", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "适合缓慢温和地降低外界刺激、逐步减少意识进入休息的情况。" },
+  hi: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "शांत विराम और विचारों को व्यवस्थित करना। श्वास अभ्यास और ध्यान से पहले की तैयारी के लिए उपयुक्त।", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "मन-शरीर विश्राम अभ्यास, शांत बैठने और बिना किसी विशेष उद्देश्य के मन को खाली रखने के लिए उपयुक्त।", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "बाहरी उत्तेजना को धीरे और सहजता से कम करने तथा धीरे-धीरे विश्राम में जाने के लिए उपयुक्त।" },
+  es: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "Pausas tranquilas y ordenar ideas. Adecuado para prácticas de respiración y preparación antes de meditar.", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "Adecuado para prácticas de relajación mente-cuerpo, sentarse en calma y desconectar sin un propósito específico.", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "Adecuado para reducir lenta y suavemente los estímulos externos y pasar gradualmente al descanso." },
+  fr: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "Pauses calmes et organisation des idées. Adapté aux exercices de respiration et à la préparation avant la méditation.", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "Adapté aux exercices de détente corps-esprit, à la position assise calme et au fait de laisser l'esprit vagabonder sans but particulier.", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "Adapté pour réduire lentement et en douceur les stimuli extérieurs et glisser progressivement vers le repos." },
+  ar: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "فترات هادئة وترتيب الأفكار. مناسب لتمارين التنفس والاستعداد قبل التأمل.", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "مناسب لتمارين استرخاء الجسد والذهن، والجلوس بهدوء، وإراحة الذهن بلا غرض محدد.", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "مناسب لخفض المثيرات الخارجية ببطء ولطف والانتقال تدريجيًا إلى الراحة." },
+  ja: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "静かに立ち止まり、考えを整理する。呼吸の練習と瞑想前の準備に適しています。", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "心身をゆるめる練習、静かに座ること、特別な目的なく頭を空にする時間に適しています。", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "外からの刺激をゆっくり穏やかに減らし、徐々に休息へ向かう時間に適しています。" },
+  ko: { "安靜停頓、整理思緒。適合呼吸練習與冥想前準備。": "조용히 멈추고 생각을 정리하기. 호흡 연습과 명상 전 준비에 적합합니다.", "適合身心放鬆練習、靜坐、腦袋放空無特殊目的情況。": "몸과 마음의 이완 연습, 조용히 앉아 있기, 특별한 목적 없이 머리를 비우는 시간에 적합합니다.", "適合緩慢溫和降低外界刺激、逐步減少意識進入休息的情況。": "외부 자극을 천천히 부드럽게 낮추고 점차 휴식으로 들어가는 시간에 적합합니다." },
+};
+
+Object.entries(finalUsageSituationCopy).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
 Object.assign(localizedText.en, { "純音": "Pure tone" });
 Object.assign(localizedText["zh-CN"], { "純音": "纯音" });
 Object.assign(localizedText.hi, { "純音": "शुद्ध टोन" });

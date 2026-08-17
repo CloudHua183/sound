@@ -4,7 +4,7 @@
 
 - Repositioned the product as a personal binaural-beat and pure-tone sound experience and experiment tool.
 - Updated all six technical-band cards to neutral use situations in nine interface languages.
-- Expanded the Alpha, Theta, and Delta use-situation descriptions in all nine languages without adding outcome claims.
+- Finalized the Alpha, Theta, and Delta use-situation descriptions in all nine languages without adding outcome claims.
 - Added safety and research boundaries: audible carrier-tone beat sensation, low-volume guidance, stop-on-discomfort guidance, and headphone-use cautions.
 - Added four PubMed reading links (Garcia-Argibay 2019; Basu & Banerjee 2023; Ingendoh et al. 2023; Chee et al. 2024) with a neutral mixed-evidence note.
 - Added a non-functional future-exploration note for blue and purple noise as background-masking experiments.
