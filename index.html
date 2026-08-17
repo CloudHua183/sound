@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>高頻聲音與腦波節拍工具</title>
+    <title>雙耳節拍與純音體驗</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -11,8 +11,8 @@
       <section class="sound-console" aria-label="聲音控制台">
         <header class="topbar">
           <div>
-            <p class="eyebrow">Frequency Studio</p>
-            <h1 id="appTitle">高頻聲音與腦波節拍</h1>
+            <p class="eyebrow">個人聲音實驗工具</p>
+            <h1 id="appTitle">雙耳節拍與純音體驗</h1>
           </div>
           <div id="statusPill" class="status-pill" aria-live="polite">已停止</div>
           <label class="language-picker">語言
@@ -39,32 +39,32 @@
           <button class="preset active" type="button" data-preset="alpha">
             <span>Alpha・平靜</span>
             <strong>8-12 Hz</strong>
-            <small>靜坐前、閱讀與平穩專注</small>
+            <small>安靜停頓、整理思緒與個人發想</small>
           </button>
           <button class="preset" type="button" data-preset="beta">
             <span>Beta・專注</span>
             <strong>13-30 Hz</strong>
-            <small>短時工作、創作與提振精神</small>
+            <small>閱讀、寫作與短時段工作</small>
           </button>
           <button class="preset" type="button" data-preset="gamma">
             <span>Gamma・創造力</span>
             <strong>30-45 Hz</strong>
-            <small>高投入任務前的短時聆聽</small>
+            <small>開始創作或任務前的短暫高節奏暖身</small>
           </button>
           <button class="preset" type="button" data-preset="theta">
             <span>Theta・放鬆</span>
             <strong>4-7 Hz</strong>
-            <small>呼吸練習、打坐與沉靜時刻</small>
+            <small>逐步放慢節奏與休息前</small>
           </button>
           <button class="preset" type="button" data-preset="delta">
             <span>Delta・待機</span>
             <strong>1-4 Hz</strong>
-            <small>夜間放鬆與安靜休息前</small>
+            <small>低刺激、最小維持背景</small>
           </button>
           <button class="preset" type="button" data-preset="focus">
-            <span>Pure Tone・鐘音</span>
+            <span>Pure Tone</span>
             <strong>1200 Hz</strong>
-            <small>單一音色練習；請維持低音量</small>
+            <small>單純音色及耳機／左右聲道測試</small>
           </button>
         </section>
 
@@ -106,7 +106,7 @@
             <div class="segments" role="group" aria-label="播放模式">
               <button class="segment active" type="button" data-mode="binaural">雙耳節拍</button>
               <button class="segment" type="button" data-mode="pulse">脈衝調制</button>
-              <button class="segment" type="button" data-mode="tone">純高頻</button>
+              <button class="segment" type="button" data-mode="tone">純音</button>
             </div>
 
             <div class="visualizer" aria-hidden="true">
@@ -116,7 +116,7 @@
             </div>
 
             <p class="note">
-              建議使用耳機並保持低音量；若感到不適請立即停止。情境文字僅供安排練習，不保證改善專注、記憶、睡眠或任何健康狀況。
+              從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。
             </p>
 
             <div class="session-controls">
@@ -130,24 +130,21 @@
                 </select>
                 <output id="timerOutput">不計時</output>
               </label>
-              <label class="toggle-row"><input id="ambientEnabled" type="checkbox" /> 柔和環境底音</label>
-              <label class="field compact-field">
-                <span>環境聲音量</span>
-                <input id="ambientVolume" type="range" min="0" max="0.18" value="0.04" step="0.01" />
-                <output id="ambientOutput">22%</output>
-              </label>
             </div>
           </div>
         </section>
 
-        <section class="research-panel" aria-label="研究閱讀">
-          <h2>研究閱讀與證據界限</h2>
-          <p>以下為雙耳節拍與聽覺刺激的系統性回顧；研究結果受頻率、聆聽時間與研究設計影響，不能視為醫療或效果保證。</p>
+        <section class="research-panel" aria-label="研究、安全與使用界限">
+          <h2>研究、安全與使用界限</h2>
+          <p>腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。</p>
+          <p>從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。</p>
           <ul>
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/30073406/" target="_blank" rel="noreferrer">Garcia-Argibay et al. (2019)</a>：統合認知、焦慮與疼痛研究，指出效果與使用條件相關。</li>
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/35842538/" target="_blank" rel="noreferrer">Zhang et al. (2022)</a>：記憶與注意力的系統性回顧；結論仍有混合結果，需更嚴謹研究。</li>
-            <li><a href="https://pubmed.ncbi.nlm.nih.gov/41656644/" target="_blank" rel="noreferrer">Music and binaural beat interventions (2025)</a>：整理焦慮、睡眠與認知研究，適合作為後續閱讀起點。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/30073406/" target="_blank" rel="noreferrer">Garcia-Argibay et al. (2019)</a>：研究結果混合，仍需更高品質研究。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/35842538/" target="_blank" rel="noreferrer">Basu &amp; Banerjee (2023)</a>：研究結果混合，仍需更高品質研究。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/37205669/" target="_blank" rel="noreferrer">Ingendoh et al. (2023)</a>：研究結果混合，仍需更高品質研究。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/38458383/" target="_blank" rel="noreferrer">Chee et al. (2024)</a>：研究結果混合，仍需更高品質研究。</li>
           </ul>
+          <p><strong>後續探索：</strong>藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。</p>
         </section>
 
         <footer class="app-footer">
@@ -156,7 +153,7 @@
             <a href="/privacy-policy">Privacy Policy</a>
             <a href="/terms-of-service">Terms of Service</a>
           </nav>
-          <span>Version 1.0.0</span>
+          <span>Version 1.1.0</span>
         </footer>
       </section>
     </main>

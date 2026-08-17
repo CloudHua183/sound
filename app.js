@@ -4,42 +4,42 @@ const presets = {
     beat: 10,
     carrier: 440,
     mode: "binaural",
-    description: "平穩專注的雙耳節拍預設",
+    description: "安靜停頓、整理思緒與個人發想",
   },
   beta: {
     name: "Beta",
     beat: 18,
     carrier: 520,
     mode: "binaural",
-    description: "清醒工作節奏的雙耳節拍預設",
+    description: "閱讀、寫作與短時段工作",
   },
   gamma: {
     name: "Gamma",
     beat: 40,
     carrier: 640,
     mode: "binaural",
-    description: "高速節奏感的雙耳節拍預設",
+    description: "開始創作或任務前的短暫高節奏暖身",
   },
   theta: {
     name: "Theta",
     beat: 6,
     carrier: 360,
     mode: "binaural",
-    description: "慢速放鬆節奏的雙耳節拍預設",
+    description: "逐步放慢節奏與休息前",
   },
   delta: {
     name: "Delta",
     beat: 2.5,
     carrier: 280,
     mode: "pulse",
-    description: "低速脈衝調制預設",
+    description: "低刺激、最小維持背景",
   },
   focus: {
-    name: "High Focus",
+    name: "Pure Tone",
     beat: 1200,
     carrier: 1200,
     mode: "tone",
-    description: "單一高頻純音預設",
+    description: "單純音色及耳機／左右聲道測試",
   },
 };
 
@@ -58,9 +58,6 @@ const nodes = {
   volumeOutput: document.querySelector("#volumeOutput"),
   timerDuration: document.querySelector("#timerDuration"),
   timerOutput: document.querySelector("#timerOutput"),
-  ambientEnabled: document.querySelector("#ambientEnabled"),
-  ambientVolume: document.querySelector("#ambientVolume"),
-  ambientOutput: document.querySelector("#ambientOutput"),
   waveform: document.querySelector("#waveform"),
   visualizer: document.querySelector(".visualizer"),
   presets: Array.from(document.querySelectorAll("[data-preset]")),
@@ -71,15 +68,15 @@ const nodes = {
 };
 
 const languages = {
-  "zh-Hant": { title: "高頻聲音與腦波節拍", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
-  en: { title: "Frequency Sounds & Binaural Beats", play: "Play", stop: "Stop", stopped: "Stopped", playing: "Playing" },
-  hi: { title: "आवृत्ति ध्वनि और बाइनॉरल बीट्स", play: "चलाएँ", stop: "रोकें", stopped: "रुका हुआ", playing: "चल रहा है" },
-  es: { title: "Sonidos de frecuencia y ritmos binaurales", play: "Reproducir", stop: "Detener", stopped: "Detenido", playing: "Reproduciendo" },
-  fr: { title: "Sons de fréquence et battements binauraux", play: "Lire", stop: "Arrêter", stopped: "Arrêté", playing: "Lecture" },
-  ar: { title: "أصوات التردد والإيقاعات الثنائية", play: "تشغيل", stop: "إيقاف", stopped: "متوقف", playing: "قيد التشغيل" },
-  "zh-CN": { title: "高频声音与脑波节拍", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
-  ja: { title: "周波数サウンドとバイノーラルビート", play: "再生", stop: "停止", stopped: "停止中", playing: "再生中" },
-  ko: { title: "주파수 사운드와 바이노럴 비트", play: "재생", stop: "정지", stopped: "정지됨", playing: "재생 중" },
+  "zh-Hant": { title: "雙耳節拍與純音體驗", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
+  en: { title: "Binaural Beats & Pure Tone Experience", play: "Play", stop: "Stop", stopped: "Stopped", playing: "Playing" },
+  hi: { title: "बाइनॉरल बीट्स और शुद्ध टोन अनुभव", play: "चलाएँ", stop: "रोकें", stopped: "रुका हुआ", playing: "चल रहा है" },
+  es: { title: "Experiencia de ritmos binaurales y tonos puros", play: "Reproducir", stop: "Detener", stopped: "Detenido", playing: "Reproduciendo" },
+  fr: { title: "Expérience de battements binauraux et sons purs", play: "Lire", stop: "Arrêter", stopped: "Arrêté", playing: "Lecture" },
+  ar: { title: "تجربة الإيقاعات الثنائية والنغمات النقية", play: "تشغيل", stop: "إيقاف", stopped: "متوقف", playing: "قيد التشغيل" },
+  "zh-CN": { title: "双耳节拍与纯音体验", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
+  ja: { title: "バイノーラルビートと純音の体験", play: "再生", stop: "停止", stopped: "停止中", playing: "再生中" },
+  ko: { title: "바이노럴 비트와 순음 체험", play: "재생", stop: "정지", stopped: "정지됨", playing: "재생 중" },
 };
 
 const sortLabels = {
@@ -147,6 +144,34 @@ Object.assign(localizedText.es, { "Alpha・平靜": "Alpha・Calma", "Beta・專
 Object.assign(localizedText.fr, { "Alpha・平靜": "Alpha・Calme", "Beta・專注": "Beta・Concentration", "Gamma・創造力": "Gamma・Créativité", "Theta・放鬆": "Theta・Détente", "Delta・待機": "Delta・Veille" });
 Object.assign(localizedText.ar, { "Alpha・平靜": "Alpha・هدوء", "Beta・專注": "Beta・تركيز", "Gamma・創造力": "Gamma・إبداع", "Theta・放鬆": "Theta・استرخاء", "Delta・待機": "Delta・استعداد" });
 
+const version110Text = {
+  en: { "個人聲音實驗工具": "Personal sound experiment tool", "安靜停頓、整理思緒與個人發想": "Quiet pauses, organizing thoughts, and personal ideation", "閱讀、寫作與短時段工作": "Reading, writing, and short work sessions", "開始創作或任務前的短暫高節奏暖身": "A short, higher-tempo warm-up before creating or starting a task", "逐步放慢節奏與休息前": "Gradually slowing down before a break", "低刺激、最小維持背景": "Low-stimulation, minimal-maintenance background", "單純音色及耳機／左右聲道測試": "A simple tone and headphone left/right channel test", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "Start at a low volume; stop immediately for tinnitus, discomfort, or headache. Do not use headphones while driving, cycling, or when you need to hear your surroundings. Cards describe use situations only; they do not promise brainwave induction or improvements to ability, illness, or sleep.", "研究、安全與使用界限": "Research, safety, and use limits", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "EEG band names and binaural-beat differences describe a beat sensation formed by audible carrier tones. Cards are use situations, not promises to induce the same brainwaves or improve a particular ability, illness, or sleep.", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "Start at a low volume; stop immediately for tinnitus, discomfort, or headache. Do not use headphones while driving, cycling, or when you need to hear your surroundings.", "研究結果混合，仍需更高品質研究。": "Findings are mixed; higher-quality research is still needed.", "後續探索：": "Future exploration: ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "Blue and purple noise are possible directions for background-masking experiments, not claims of therapeutic effect or function.", "Privacy Policy": "Privacy Policy", "Terms of Service": "Terms of Service", "Version 1.1.0": "Version 1.1.0" },
+  "zh-CN": { "個人聲音實驗工具": "个人声音实验工具", "安靜停頓、整理思緒與個人發想": "安静停顿、整理思绪与个人构想", "閱讀、寫作與短時段工作": "阅读、写作与短时段工作", "開始創作或任務前的短暫高節奏暖身": "开始创作或任务前的短暂高节奏热身", "逐步放慢節奏與休息前": "逐步放慢节奏与休息前", "低刺激、最小維持背景": "低刺激、最小维持背景", "單純音色及耳機／左右聲道測試": "单纯音色及耳机／左右声道测试", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "从低音量开始；若有耳鸣、不适或头痛请立即停止。驾驶、骑车或需要察觉环境声时，请勿戴耳机使用。卡片仅为使用情境，不代表诱发脑波或改善能力、疾病或睡眠。", "研究、安全與使用界限": "研究、安全与使用界限", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "脑电图频段名称与双耳节拍差，是可听载波音形成的节拍感；卡片是使用情境，不代表能诱发相同脑波，或改善特定能力、疾病或睡眠。", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "从低音量开始；若有耳鸣、不适或头痛请立即停止。驾驶、骑车或需要察觉环境声时，请勿戴耳机使用。", "研究結果混合，仍需更高品質研究。": "研究结果混合，仍需更高质量研究。", "後續探索：": "后续探索：", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "蓝／紫噪音可作为背景遮蔽的实验方向，不表示疗效或功能承诺。", "Privacy Policy": "隐私政策", "Terms of Service": "服务条款", "Version 1.1.0": "版本 1.1.0" },
+  hi: { "個人聲音實驗工具": "व्यक्तिगत ध्वनि प्रयोग उपकरण", "安靜停頓、整理思緒與個人發想": "शांत विराम, विचारों को व्यवस्थित करना और निजी कल्पना", "閱讀、寫作與短時段工作": "पढ़ना, लिखना और छोटे कार्य सत्र", "開始創作或任務前的短暫高節奏暖身": "रचना या कार्य शुरू करने से पहले छोटा तेज़-लय वार्म-अप", "逐步放慢節奏與休息前": "विराम से पहले धीरे-धीरे गति कम करना", "低刺激、最小維持背景": "कम उत्तेजना वाली, न्यूनतम पृष्ठभूमि", "單純音色及耳機／左右聲道測試": "सरल टोन और हेडफ़ोन बाएँ/दाएँ चैनल परीक्षण", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "कम आवाज़ से शुरू करें; कान में घंटी, असुविधा या सिरदर्द हो तो तुरंत रोकें। गाड़ी चलाते, साइकिल चलाते या आसपास की आवाज़ें सुनना जरूरी हो तो हेडफ़ोन न लगाएँ। कार्ड केवल उपयोग स्थितियाँ बताते हैं; वे ब्रेनवेव उत्पन्न करने या क्षमता, बीमारी या नींद सुधारने का वादा नहीं करते।", "研究、安全與使用界限": "अनुसंधान, सुरक्षा और उपयोग की सीमाएँ", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "EEG बैंड नाम और बाइनॉरल बीट का अंतर सुनाई देने वाले कैरियर टोन से बनी बीट अनुभूति का वर्णन करते हैं। कार्ड उपयोग स्थितियाँ हैं, समान ब्रेनवेव उत्पन्न करने या क्षमता, बीमारी या नींद सुधारने का वादा नहीं।", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "कम आवाज़ से शुरू करें; कान में घंटी, असुविधा या सिरदर्द हो तो तुरंत रोकें। गाड़ी चलाते, साइकिल चलाते या आसपास की आवाज़ें सुनना जरूरी हो तो हेडफ़ोन न लगाएँ।", "研究結果混合，仍需更高品質研究。": "निष्कर्ष मिश्रित हैं; बेहतर गुणवत्ता वाले शोध की अभी भी आवश्यकता है।", "後續探索：": "आगे की खोज: ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "नीला और बैंगनी शोर पृष्ठभूमि-ढकाव प्रयोगों की संभावित दिशा हैं, उपचार या कार्यक्षमता के दावे नहीं।", "Privacy Policy": "गोपनीयता नीति", "Terms of Service": "सेवा की शर्तें", "Version 1.1.0": "संस्करण 1.1.0" },
+  es: { "個人聲音實驗工具": "Herramienta personal de experimentación sonora", "安靜停頓、整理思緒與個人發想": "Pausas tranquilas, ordenar ideas e ideación personal", "閱讀、寫作與短時段工作": "Lectura, escritura y sesiones breves de trabajo", "開始創作或任務前的短暫高節奏暖身": "Un breve calentamiento de ritmo más alto antes de crear o iniciar una tarea", "逐步放慢節奏與休息前": "Reducir el ritmo gradualmente antes de un descanso", "低刺激、最小維持背景": "Fondo de baja estimulación y mantenimiento mínimo", "單純音色及耳機／左右聲道測試": "Un tono simple y prueba de auriculares de canal izquierdo/derecho", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "Comience con volumen bajo; deténgase de inmediato si hay tinnitus, molestias o dolor de cabeza. No use auriculares al conducir, ir en bicicleta o cuando necesite oír el entorno. Las tarjetas solo describen situaciones de uso; no prometen inducir ondas cerebrales ni mejorar capacidades, enfermedades o sueño.", "研究、安全與使用界限": "Investigación, seguridad y límites de uso", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "Los nombres de bandas de EEG y las diferencias de ritmos binaurales describen una sensación de pulso formada por tonos portadores audibles. Las tarjetas son situaciones de uso, no promesas de inducir las mismas ondas cerebrales ni de mejorar una capacidad, enfermedad o sueño.", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "Comience con volumen bajo; deténgase de inmediato si hay tinnitus, molestias o dolor de cabeza. No use auriculares al conducir, ir en bicicleta o cuando necesite oír el entorno.", "研究結果混合，仍需更高品質研究。": "Los resultados son mixtos; aún se necesita investigación de mayor calidad.", "後續探索：": "Exploración futura: ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "El ruido azul y violeta son posibles direcciones para experimentos de enmascaramiento de fondo, no promesas de efecto terapéutico ni función.", "Privacy Policy": "Política de privacidad", "Terms of Service": "Términos de servicio", "Version 1.1.0": "Versión 1.1.0" },
+  fr: { "個人聲音實驗工具": "Outil personnel d'expérimentation sonore", "安靜停頓、整理思緒與個人發想": "Pauses calmes, organisation des idées et réflexion personnelle", "閱讀、寫作與短時段工作": "Lecture, écriture et courtes sessions de travail", "開始創作或任務前的短暫高節奏暖身": "Un bref échauffement à rythme plus soutenu avant de créer ou de commencer une tâche", "逐步放慢節奏與休息前": "Ralentir progressivement avant une pause", "低刺激、最小維持背景": "Fond à faible stimulation et entretien minimal", "單純音色及耳機／左右聲道測試": "Un son simple et un test de casque gauche/droite", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "Commencez à faible volume ; arrêtez immédiatement en cas d'acouphènes, d'inconfort ou de maux de tête. N'utilisez pas de casque en conduisant, à vélo ou lorsque vous devez entendre votre environnement. Les cartes décrivent uniquement des situations d'usage ; elles ne promettent pas d'induire des ondes cérébrales ni d'améliorer une capacité, une maladie ou le sommeil.", "研究、安全與使用界限": "Recherche, sécurité et limites d'usage", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "Les noms de bandes EEG et les écarts de battements binauraux décrivent une sensation de battement formée par des sons porteurs audibles. Les cartes sont des situations d'usage, non des promesses d'induire les mêmes ondes cérébrales ou d'améliorer une capacité, une maladie ou le sommeil.", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "Commencez à faible volume ; arrêtez immédiatement en cas d'acouphènes, d'inconfort ou de maux de tête. N'utilisez pas de casque en conduisant, à vélo ou lorsque vous devez entendre votre environnement.", "研究結果混合，仍需更高品質研究。": "Les résultats sont mitigés ; des recherches de meilleure qualité restent nécessaires.", "後續探索：": "Exploration future : ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "Les bruits bleu et violet sont des pistes possibles pour des expériences de masquage sonore en arrière-plan, pas des promesses d'effet thérapeutique ou de fonction.", "Privacy Policy": "Politique de confidentialité", "Terms of Service": "Conditions d'utilisation", "Version 1.1.0": "Version 1.1.0" },
+  ar: { "個人聲音實驗工具": "أداة تجارب صوتية شخصية", "安靜停頓、整理思緒與個人發想": "فترات هادئة لترتيب الأفكار والتفكير الشخصي", "閱讀、寫作與短時段工作": "القراءة والكتابة وجلسات العمل القصيرة", "開始創作或任務前的短暫高節奏暖身": "تهيئة قصيرة بإيقاع أسرع قبل الإبداع أو بدء مهمة", "逐步放慢節奏與休息前": "إبطاء الوتيرة تدريجيًا قبل الاستراحة", "低刺激、最小維持背景": "خلفية منخفضة التحفيز وبأقل تدخل", "單純音色及耳機／左右聲道測試": "نغمة بسيطة واختبار قناتي سماعة الرأس اليمنى واليسرى", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "ابدأ بمستوى صوت منخفض؛ وتوقف فورًا عند طنين الأذن أو الانزعاج أو الصداع. لا تستخدم سماعات الرأس أثناء القيادة أو ركوب الدراجة أو عندما تحتاج إلى سماع محيطك. تصف البطاقات حالات الاستخدام فقط؛ ولا تعد بتحفيز موجات الدماغ أو تحسين القدرة أو المرض أو النوم.", "研究、安全與使用界限": "البحث والسلامة وحدود الاستخدام", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "تصف أسماء نطاقات تخطيط الدماغ وفروق الإيقاعات الثنائية إحساس نبض يتكون من نغمات حاملة مسموعة. البطاقات هي حالات استخدام، وليست وعودًا بتحفيز موجات الدماغ نفسها أو تحسين قدرة أو مرض أو نوم معين.", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "ابدأ بمستوى صوت منخفض؛ وتوقف فورًا عند طنين الأذن أو الانزعاج أو الصداع. لا تستخدم سماعات الرأس أثناء القيادة أو ركوب الدراجة أو عندما تحتاج إلى سماع محيطك.", "研究結果混合，仍需更高品質研究。": "النتائج مختلطة؛ وما زالت هناك حاجة إلى أبحاث أعلى جودة.", "後續探索：": "استكشاف لاحق: ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "الضجيج الأزرق والبنفسجي اتجاهان محتملان لتجارب حجب الخلفية، وليسا ادعاءً بتأثير علاجي أو وظيفة.", "Privacy Policy": "سياسة الخصوصية", "Terms of Service": "شروط الخدمة", "Version 1.1.0": "الإصدار 1.1.0" },
+  ja: { "個人聲音實驗工具": "個人用サウンド実験ツール", "安靜停頓、整理思緒與個人發想": "静かな間を取り、考えを整理し、個人で発想する", "閱讀、寫作與短時段工作": "読書、執筆、短時間の作業", "開始創作或任務前的短暫高節奏暖身": "創作や作業を始める前の短い高テンポのウォームアップ", "逐步放慢節奏與休息前": "休憩前に徐々にペースを落とす", "低刺激、最小維持背景": "低刺激で最小限の維持をする背景", "單純音色及耳機／左右聲道測試": "シンプルな音色とヘッドホン左右チャンネルのテスト", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "低い音量から始め、耳鳴り、不快感、頭痛があれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。カードは利用場面を示すもので、脳波の誘発や能力、病気、睡眠の改善を約束するものではありません。", "研究、安全與使用界限": "研究・安全・利用上の限界", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "EEGの帯域名とバイノーラルビートの差は、可聴のキャリア音によって生じるうなりの感覚を表します。カードは利用場面であり、同じ脳波を誘発したり、特定の能力、病気、睡眠を改善したりする約束ではありません。", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "低い音量から始め、耳鳴り、不快感、頭痛があれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。", "研究結果混合，仍需更高品質研究。": "研究結果は混在しており、より質の高い研究がなお必要です。", "後續探索：": "今後の探索：", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "ブルー／パープルノイズは背景マスキング実験の候補であり、治療効果や機能を約束するものではありません。", "Privacy Policy": "プライバシーポリシー", "Terms of Service": "利用規約", "Version 1.1.0": "バージョン 1.1.0" },
+  ko: { "個人聲音實驗工具": "개인 사운드 실험 도구", "安靜停頓、整理思緒與個人發想": "조용히 멈추고 생각을 정리하며 개인적으로 발상하기", "閱讀、寫作與短時段工作": "읽기, 쓰기, 짧은 작업 시간", "開始創作或任務前的短暫高節奏暖身": "창작이나 작업 시작 전 짧은 고템포 워밍업", "逐步放慢節奏與休息前": "휴식 전에 점차 속도 늦추기", "低刺激、最小維持背景": "낮은 자극의 최소 유지 배경", "單純音色及耳機／左右聲道測試": "단순한 음색과 헤드폰 좌우 채널 테스트", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "낮은 볼륨에서 시작하고 이명, 불편함 또는 두통이 있으면 즉시 멈추세요. 운전, 자전거 이용 또는 주변 소리를 들어야 할 때는 헤드폰을 사용하지 마세요. 카드는 사용 상황만 나타내며 뇌파 유도나 능력, 질병 또는 수면 개선을 약속하지 않습니다.", "研究、安全與使用界限": "연구, 안전 및 사용 한계", "腦電圖頻段名稱與雙耳節拍差，是可聽載波音形成的節拍感；卡片是使用情境，不代表能誘發相同腦波，或改善特定能力、疾病或睡眠。": "EEG 대역 이름과 바이노럴 비트 차이는 들을 수 있는 반송파 음이 만드는 비트 감각을 설명합니다. 카드는 사용 상황이며, 같은 뇌파를 유도하거나 특정 능력, 질병 또는 수면을 개선한다는 약속이 아닙니다.", "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "낮은 볼륨에서 시작하고 이명, 불편함 또는 두통이 있으면 즉시 멈추세요. 운전, 자전거 이용 또는 주변 소리를 들어야 할 때는 헤드폰을 사용하지 마세요.", "研究結果混合，仍需更高品質研究。": "연구 결과는 엇갈리며 더 높은 품질의 연구가 필요합니다.", "後續探索：": "향후 탐색: ", "藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。": "블루/퍼플 노이즈는 배경 마스킹 실험의 가능한 방향이며 치료 효과나 기능을 약속하지 않습니다.", "Privacy Policy": "개인정보 처리방침", "Terms of Service": "서비스 약관", "Version 1.1.0": "버전 1.1.0" },
+};
+
+Object.entries(version110Text).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
+Object.assign(localizedText.en, { "純音": "Pure tone" });
+Object.assign(localizedText["zh-CN"], { "純音": "纯音" });
+Object.assign(localizedText.hi, { "純音": "शुद्ध टोन" });
+Object.assign(localizedText.es, { "純音": "Tono puro" });
+Object.assign(localizedText.fr, { "純音": "Son pur" });
+Object.assign(localizedText.ar, { "純音": "نغمة نقية" });
+Object.assign(localizedText.ja, {
+  "純音": "純音",
+  "Delta・待機": "Delta・スタンバイ",
+  "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。": "低い音量から始め、みみなり、不快感、頭の痛みがあれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。カードは利用場面を示すもので、脳波の誘発や能力、病気、睡眠の改善を約束するものではありません。",
+  "從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。": "低い音量から始め、みみなり、不快感、頭の痛みがあれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。",
+  "低い音量から始め、耳鳴り、不快感、頭痛があれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。カードは利用場面を示すもので、脳波の誘発や能力、病気、睡眠の改善を約束するものではありません。": "低い音量から始め、みみなり、不快感、頭の痛みがあれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。カードは利用場面を示すもので、脳波の誘発や能力、病気、睡眠の改善を約束するものではありません。",
+  "低い音量から始め、耳鳴り、不快感、頭痛があれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。": "低い音量から始め、みみなり、不快感、頭の痛みがあれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。"
+});
+Object.assign(localizedText.ko, { "純音": "순음" });
+
 const originalTextNodes = new WeakMap();
 
 function translate(source) {
@@ -167,9 +192,9 @@ function translatePage(languageKey) {
   document.title = languages[languageKey].title;
   document.querySelector(".sound-console").setAttribute("aria-label", translate("聲音參數"));
   document.querySelector(".player").setAttribute("aria-label", translate("模式"));
-  document.querySelector(".preset-grid").setAttribute("aria-label", translate("高頻聲音與腦波節拍"));
+  document.querySelector(".preset-grid").setAttribute("aria-label", languages[languageKey].title);
   document.querySelector(".segments").setAttribute("aria-label", translate("模式"));
-  document.querySelector(".research-panel").setAttribute("aria-label", translate("研究閱讀與證據界限"));
+  document.querySelector(".research-panel").setAttribute("aria-label", translate("研究、安全與使用界限"));
   nodes.languageSelect.setAttribute("aria-label", translate("語言"));
 }
 
@@ -280,7 +305,6 @@ function updateOutputs() {
   nodes.beatOutput.textContent = `${formatHz(beat)} Hz`;
   nodes.carrierOutput.textContent = `${formatHz(carrier)} Hz`;
   nodes.volumeOutput.textContent = `${volumePercent}%`;
-  nodes.ambientOutput.textContent = `${Math.round((Number(nodes.ambientVolume.value) / 0.18) * 100)}%`;
   nodes.beatValue.textContent = state.mode === "tone" ? formatHz(carrier) : formatHz(beat);
 
   if (state.audioContext && state.masterGain) {
@@ -400,24 +424,6 @@ function playTone() {
   createOscillator(Number(nodes.carrierFrequency.value), toneGain);
 }
 
-function playAmbient() {
-  if (!nodes.ambientEnabled.checked) return;
-  const context = state.audioContext;
-  const buffer = context.createBuffer(1, context.sampleRate * 2, context.sampleRate);
-  const data = buffer.getChannelData(0);
-  for (let index = 0; index < data.length; index += 1) data[index] = (Math.random() * 2 - 1) * 0.22;
-  const source = trackNode(context.createBufferSource());
-  const filter = trackNode(context.createBiquadFilter());
-  const gain = trackNode(context.createGain());
-  source.buffer = buffer;
-  source.loop = true;
-  filter.type = "lowpass";
-  filter.frequency.value = 720;
-  gain.gain.value = Number(nodes.ambientVolume.value);
-  source.connect(filter).connect(gain).connect(state.masterGain);
-  source.start();
-}
-
 function clearTimer() {
   clearInterval(state.timerId);
   state.timerId = null;
@@ -477,8 +483,6 @@ function startSound() {
     playTone();
   }
 
-  playAmbient();
-
   state.playing = true;
   nodes.statusPill.textContent = languages[nodes.languageSelect.value].playing;
   nodes.statusPill.classList.add("playing");
@@ -502,7 +506,7 @@ nodes.modes.forEach((button) => {
   button.addEventListener("click", () => updateMode(button.dataset.mode));
 });
 
-[nodes.beatFrequency, nodes.carrierFrequency, nodes.volume, nodes.ambientVolume].forEach((input) => {
+[nodes.beatFrequency, nodes.carrierFrequency, nodes.volume].forEach((input) => {
   input.addEventListener("input", () => {
     state.currentPreset = "custom";
     setActiveButton(nodes.presets, "preset", "");
@@ -514,7 +518,6 @@ nodes.modes.forEach((button) => {
 });
 
 nodes.waveform.addEventListener("change", restartSound);
-nodes.ambientEnabled.addEventListener("change", restartSound);
 nodes.timerDuration.addEventListener("change", () => {
   if (state.playing) startTimer();
   else updateTimerLabel();
@@ -523,11 +526,11 @@ nodes.languageSelect.addEventListener("change", () => {
   const language = languages[nodes.languageSelect.value];
   document.documentElement.lang = nodes.languageSelect.value;
   document.documentElement.dir = nodes.languageSelect.value === "ar" ? "rtl" : "ltr";
+  translatePage(nodes.languageSelect.value);
   nodes.appTitle.textContent = language.title;
   nodes.playButton.textContent = language.play;
   nodes.stopButton.textContent = language.stop;
   nodes.statusPill.textContent = state.playing ? language.playing : language.stopped;
-  translatePage(nodes.languageSelect.value);
   updateSortControls();
 });
 
