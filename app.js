@@ -18,7 +18,7 @@ const presets = {
     beat: 40,
     carrier: 640,
     mode: "binaural",
-    description: "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。",
+    description: "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。",
   },
   theta: {
     name: "Theta",
@@ -181,14 +181,14 @@ const finalUsageSituationCopy = {
 
 Object.entries(finalUsageSituationCopy).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
 const gammaUsageSituationCopy = {
-  en: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "A short, higher-tempo warm-up before creating or starting a task. Suitable as a brief sound warm-up before creating when you want to engage your thinking or feel more alert." },
-  "zh-CN": { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "开始创作或任务前的短暂高节奏热身。适合在需要活化思路、提起精神时，作为开始创作前的短暂声音热身。" },
-  hi: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "रचना या कार्य शुरू करने से पहले छोटा तेज़-लय वार्म-अप। जब आप विचारों को सक्रिय करने या अधिक सजग महसूस करने के लिए रचना शुरू करने से पहले एक छोटा ध्वनि वार्म-अप चाहते हों, तब उपयुक्त।" },
-  es: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "Un breve calentamiento de ritmo más alto antes de crear o iniciar una tarea. Adecuado como breve calentamiento sonoro antes de crear cuando se busca activar las ideas o sentirse más despejado." },
-  fr: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "Un bref échauffement à rythme plus soutenu avant de créer ou de commencer une tâche. Adapté comme court échauffement sonore avant de créer lorsque l'on souhaite stimuler ses idées ou se sentir plus alerte." },
-  ar: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "تهيئة قصيرة بإيقاع أسرع قبل الإبداع أو بدء مهمة. مناسب كتهيئة صوتية قصيرة قبل الإبداع عندما تريد تنشيط الأفكار أو الشعور بمزيد من اليقظة." },
-  ja: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "創作や作業を始める前の短い高テンポのウォームアップ。考えを動かしたい、気分を引き上げたいときに、創作前の短い音のウォームアップとして適しています。" },
-  ko: { "開始創作或任務前的短暫高節奏暖身。適合在需要活化思路、提起精神時，作為開始創作前的短暫聲音暖身。": "창작이나 작업 시작 전 짧은 고템포 워밍업. 생각을 활성화하거나 기분을 끌어올리고 싶을 때 창작 전의 짧은 사운드 워밍업으로 적합합니다." },
+  en: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "A short, higher-tempo warm-up before starting a task, suitable for beginning creative work and shifting between thoughts." },
+  "zh-CN": { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "投入任务前的短暂高节奏热身，适合创作启动与思绪切换。" },
+  hi: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "कार्य में लगने से पहले छोटा तेज़-लय वार्म-अप, रचनात्मक काम शुरू करने और विचारों के बीच बदलाव के लिए उपयुक्त।" },
+  es: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "Un breve calentamiento de ritmo más alto antes de iniciar una tarea, adecuado para comenzar a crear y cambiar de ideas." },
+  fr: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "Un bref échauffement à rythme plus soutenu avant de commencer une tâche, adapté au démarrage créatif et aux changements d'idées." },
+  ar: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "تهيئة قصيرة بإيقاع أسرع قبل بدء مهمة، مناسبة لبدء الإبداع والانتقال بين الأفكار." },
+  ja: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "作業に取りかかる前の短い高テンポのウォームアップ。創作の始動や考えの切り替えに適しています。" },
+  ko: { "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。": "작업에 들어가기 전 짧은 고템포 워밍업으로, 창작 시작과 생각 전환에 적합합니다." },
 };
 
 Object.entries(gammaUsageSituationCopy).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
