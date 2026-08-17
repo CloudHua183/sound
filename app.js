@@ -4,7 +4,7 @@ const presets = {
     beat: 10,
     carrier: 440,
     mode: "binaural",
-    description: "安靜停頓、整理思緒與個人發想",
+    description: "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。",
   },
   beta: {
     name: "Beta",
@@ -25,14 +25,14 @@ const presets = {
     beat: 6,
     carrier: 360,
     mode: "binaural",
-    description: "逐步放慢節奏與休息前",
+    description: "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。",
   },
   delta: {
     name: "Delta",
     beat: 2.5,
     carrier: 280,
     mode: "pulse",
-    description: "低刺激、最小維持背景",
+    description: "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。",
   },
   focus: {
     name: "Pure Tone",
@@ -156,6 +156,18 @@ const version110Text = {
 };
 
 Object.entries(version110Text).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
+const usageSituationAdditions = {
+  en: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "Quiet pauses, organizing thoughts, and personal ideation. Suitable for breathing practice, brief pauses, and preparation before meditation.", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "Gradually slowing down before a break. Suitable for relaxation practice, sitting quietly, or the transition before a rest.", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "Low-stimulation, minimal-maintenance background. Suitable for low-stimulation rest at night or times when you want to keep minimal background sound." },
+  "zh-CN": { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "安静停顿、整理思绪与个人构想。适合呼吸练习、短暂停顿、冥想前准备。", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "逐步放慢节奏与休息前。适合放松练习、静坐或休息前的过渡时段。", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "低刺激、最小维持背景。适合夜间低刺激休息，或希望维持最小背景声的时段。" },
+  hi: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "शांत विराम, विचारों को व्यवस्थित करना और निजी कल्पना। श्वास अभ्यास, छोटे विराम और ध्यान से पहले की तैयारी के लिए उपयुक्त।", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "विश्राम से पहले धीरे-धीरे गति कम करना। विश्राम अभ्यास, शांत बैठने या आराम से पहले के संक्रमण समय के लिए उपयुक्त।", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "कम उत्तेजना वाली, न्यूनतम पृष्ठभूमि। रात में कम-उत्तेजना वाले आराम या न्यूनतम पृष्ठभूमि ध्वनि रखने के समय के लिए उपयुक्त।" },
+  es: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "Pausas tranquilas, ordenar ideas e ideación personal. Adecuado para prácticas de respiración, pausas breves y preparación antes de meditar.", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "Reducir el ritmo gradualmente antes de un descanso. Adecuado para prácticas de relajación, sentarse en calma o el periodo de transición antes de descansar.", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "Fondo de baja estimulación y mantenimiento mínimo. Adecuado para descansar de noche con baja estimulación o cuando se desea mantener un sonido de fondo mínimo." },
+  fr: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "Pauses calmes, organisation des idées et réflexion personnelle. Adapté aux exercices de respiration, aux brèves pauses et à la préparation avant la méditation.", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "Ralentir progressivement avant une pause. Adapté aux exercices de détente, à la position assise calme ou à la transition avant le repos.", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "Fond à faible stimulation et entretien minimal. Adapté au repos nocturne à faible stimulation ou aux moments où l'on souhaite conserver un fond sonore minimal." },
+  ar: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "فترات هادئة لترتيب الأفكار والتفكير الشخصي. مناسب لتمارين التنفس والتوقفات القصيرة والاستعداد قبل التأمل.", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "إبطاء الوتيرة تدريجيًا قبل الاستراحة. مناسب لتمارين الاسترخاء أو الجلوس بهدوء أو الفترة الانتقالية قبل الراحة.", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "خلفية منخفضة التحفيز وبأقل تدخل. مناسب للراحة الليلية منخفضة التحفيز أو الأوقات التي تريد فيها الحفاظ على أقل قدر من الصوت الخلفي." },
+  ja: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "静かな間を取り、考えを整理し、個人で発想する。呼吸の練習、短い休止、瞑想前の準備に適しています。", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "休憩前に徐々にペースを落とす。リラックスの練習、静かに座る時間、休む前の移行時間に適しています。", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "低刺激で最小限の維持をする背景。夜の低刺激な休息や、最小限の背景音を保ちたい時間に適しています。" },
+  ko: { "安靜停頓、整理思緒與個人發想。適合呼吸練習、短暫停頓、冥想前準備。": "조용히 멈추고 생각을 정리하며 개인적으로 발상하기. 호흡 연습, 짧은 멈춤, 명상 전 준비에 적합합니다.", "逐步放慢節奏與休息前。適合放鬆練習、靜坐或休息前的過渡時段。": "휴식 전에 점차 속도 늦추기. 이완 연습, 조용히 앉아 있기 또는 쉬기 전 전환 시간에 적합합니다.", "低刺激、最小維持背景。適合夜間低刺激休息，或希望維持最小背景聲的時段。": "낮은 자극의 최소 유지 배경. 밤에 낮은 자극으로 쉬거나 최소한의 배경음을 유지하고 싶은 시간에 적합합니다." },
+};
+
+Object.entries(usageSituationAdditions).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
 Object.assign(localizedText.en, { "純音": "Pure tone" });
 Object.assign(localizedText["zh-CN"], { "純音": "纯音" });
 Object.assign(localizedText.hi, { "純音": "शुद्ध टोन" });
