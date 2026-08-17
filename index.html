@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高頻聲音與腦波節拍工具</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="sound-console" aria-label="聲音控制台">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Frequency Studio</p>
+            <h1 id="appTitle">高頻聲音與腦波節拍</h1>
+          </div>
+          <div id="statusPill" class="status-pill" aria-live="polite">已停止</div>
+          <label class="language-picker">語言
+            <select id="languageSelect" aria-label="語言選擇">
+              <option value="zh-Hant">繁體中文</option><option value="zh-CN">简体中文</option><option value="en">English</option><option value="hi">हिन्दी</option><option value="es">Español</option><option value="fr">Français</option><option value="ar">العربية</option><option value="ja">日本語</option><option value="ko">한국어</option>
+            </select>
+          </label>
+        </header>
+
+        <section class="player" aria-label="播放控制">
+          <div class="frequency-readout">
+            <span id="bandName">Alpha</span>
+            <strong><span id="beatValue">10</span> Hz</strong>
+            <small id="bandDescription">平穩專注的雙耳節拍預設</small>
+          </div>
+
+          <div class="control-row">
+            <button id="playButton" class="primary-button" type="button">播放</button>
+            <button id="stopButton" class="secondary-button" type="button">停止</button>
+          </div>
+        </section>
+
+        <section class="preset-grid" aria-label="頻段預設">
+          <button class="preset active" type="button" data-preset="alpha">
+            <span>Alpha・平靜</span>
+            <strong>8-12 Hz</strong>
+            <small>靜坐前、閱讀與平穩專注</small>
+          </button>
+          <button class="preset" type="button" data-preset="beta">
+            <span>Beta・專注</span>
+            <strong>13-30 Hz</strong>
+            <small>短時工作、創作與提振精神</small>
+          </button>
+          <button class="preset" type="button" data-preset="gamma">
+            <span>Gamma・創造力</span>
+            <strong>30-45 Hz</strong>
+            <small>高投入任務前的短時聆聽</small>
+          </button>
+          <button class="preset" type="button" data-preset="theta">
+            <span>Theta・放鬆</span>
+            <strong>4-7 Hz</strong>
+            <small>呼吸練習、打坐與沉靜時刻</small>
+          </button>
+          <button class="preset" type="button" data-preset="delta">
+            <span>Delta・待機</span>
+            <strong>1-4 Hz</strong>
+            <small>夜間放鬆與安靜休息前</small>
+          </button>
+          <button class="preset" type="button" data-preset="focus">
+            <span>Pure Tone・鐘音</span>
+            <strong>1200 Hz</strong>
+            <small>單一音色練習；請維持低音量</small>
+          </button>
+        </section>
+
+        <section class="workspace">
+          <div class="panel">
+            <h2>聲音參數</h2>
+
+            <label class="field">
+              <span>節拍頻率</span>
+              <input id="beatFrequency" type="range" min="1" max="45" value="10" step="0.5" />
+              <output id="beatOutput" for="beatFrequency">10 Hz</output>
+            </label>
+
+            <label class="field">
+              <span>載波音高</span>
+              <input id="carrierFrequency" type="range" min="160" max="1400" value="440" step="1" />
+              <output id="carrierOutput" for="carrierFrequency">440 Hz</output>
+            </label>
+
+            <label class="field">
+              <span>音量</span>
+              <input id="volume" type="range" min="0" max="0.4" value="0.08" step="0.01" />
+              <output id="volumeOutput" for="volume">20%</output>
+            </label>
+
+            <label class="field">
+              <span>波形</span>
+              <select id="waveform">
+                <option value="sine" selected>Sine</option>
+                <option value="triangle">Triangle</option>
+                <option value="square">Square</option>
+                <option value="sawtooth">Sawtooth</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="panel">
+            <h2>模式</h2>
+            <div class="segments" role="group" aria-label="播放模式">
+              <button class="segment active" type="button" data-mode="binaural">雙耳節拍</button>
+              <button class="segment" type="button" data-mode="pulse">脈衝調制</button>
+              <button class="segment" type="button" data-mode="tone">純高頻</button>
+            </div>
+
+            <div class="visualizer" aria-hidden="true">
+              <div class="wave wave-one"></div>
+              <div class="wave wave-two"></div>
+              <div class="wave wave-three"></div>
+            </div>
+
+            <p class="note">
+              建議使用耳機並保持低音量；若感到不適請立即停止。情境文字僅供安排練習，不保證改善專注、記憶、睡眠或任何健康狀況。
+            </p>
+
+            <div class="session-controls">
+              <label class="field compact-field">
+                <span>練習計時</span>
+                <select id="timerDuration">
+                  <option value="0">不計時</option>
+                  <option value="600">10 分鐘</option>
+                  <option value="1200">20 分鐘</option>
+                  <option value="1800">30 分鐘</option>
+                </select>
+                <output id="timerOutput">不計時</output>
+              </label>
+              <label class="toggle-row"><input id="ambientEnabled" type="checkbox" /> 柔和環境底音</label>
+              <label class="field compact-field">
+                <span>環境聲音量</span>
+                <input id="ambientVolume" type="range" min="0" max="0.18" value="0.04" step="0.01" />
+                <output id="ambientOutput">22%</output>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="research-panel" aria-label="研究閱讀">
+          <h2>研究閱讀與證據界限</h2>
+          <p>以下為雙耳節拍與聽覺刺激的系統性回顧；研究結果受頻率、聆聽時間與研究設計影響，不能視為醫療或效果保證。</p>
+          <ul>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/30073406/" target="_blank" rel="noreferrer">Garcia-Argibay et al. (2019)</a>：統合認知、焦慮與疼痛研究，指出效果與使用條件相關。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/35842538/" target="_blank" rel="noreferrer">Zhang et al. (2022)</a>：記憶與注意力的系統性回顧；結論仍有混合結果，需更嚴謹研究。</li>
+            <li><a href="https://pubmed.ncbi.nlm.nih.gov/41656644/" target="_blank" rel="noreferrer">Music and binaural beat interventions (2025)</a>：整理焦慮、睡眠與認知研究，適合作為後續閱讀起點。</li>
+          </ul>
+        </section>
+
+        <footer class="app-footer">
+          <span>© 2026 Hologist. All rights reserved.</span>
+          <nav class="footer-links" aria-label="Legal links">
+            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="/terms-of-service">Terms of Service</a>
+          </nav>
+          <span>Version 1.0.0</span>
+        </footer>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
