@@ -165,15 +165,27 @@ h2 {
 }
 
 .primary-button {
-  border: 0;
-  color: #052e16;
-  background: var(--accent);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  background: #111416;
 }
 
 .secondary-button {
   border: 1px solid var(--line);
   color: var(--ink);
   background: #111416;
+}
+
+.primary-button.is-active {
+  border-color: transparent;
+  color: #052e16;
+  background: var(--accent);
+}
+
+.secondary-button.is-active {
+  border-color: transparent;
+  color: #450a0a;
+  background: #f87171;
 }
 
 .preset-grid {
@@ -313,7 +325,7 @@ select {
 
 .segments {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   margin-top: 16px;
 }

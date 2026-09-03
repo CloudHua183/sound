@@ -54,6 +54,12 @@ const nodes = {
   beatOutput: document.querySelector("#beatOutput"),
   carrierFrequency: document.querySelector("#carrierFrequency"),
   carrierOutput: document.querySelector("#carrierOutput"),
+  leftFrequency: document.querySelector("#leftFrequency"),
+  leftOutput: document.querySelector("#leftOutput"),
+  rightFrequency: document.querySelector("#rightFrequency"),
+  rightOutput: document.querySelector("#rightOutput"),
+  hemisphericControls: document.querySelector("#hemisphericControls"),
+  hemisphericNote: document.querySelector("#hemisphericNote"),
   volume: document.querySelector("#volume"),
   volumeOutput: document.querySelector("#volumeOutput"),
   timerDuration: document.querySelector("#timerDuration"),
@@ -207,6 +213,18 @@ Object.assign(localizedText.ja, {
   "低い音量から始め、耳鳴り、不快感、頭痛があれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。": "低い音量から始め、みみなり、不快感、頭の痛みがあれば直ちに停止してください。運転中、自転車走行中、または周囲の音を聞く必要がある場面ではヘッドホンを使用しないでください。"
 });
 Object.assign(localizedText.ko, { "純音": "순음" });
+const hemisphericText = {
+  "zh-CN": { "左耳頻率": "左耳频率", "右耳頻率": "右耳频率", "需使用耳機；左右聲道分別播放指定頻率。": "需使用耳机；左右声道分别播放指定频率。", "耳機左右聲道的獨立頻率設定": "耳机左右声道的独立频率设置" },
+  en: { "左耳頻率": "Left-ear frequency", "右耳頻率": "Right-ear frequency", "需使用耳機；左右聲道分別播放指定頻率。": "Use headphones; each channel plays its assigned frequency.", "耳機左右聲道的獨立頻率設定": "Independent left/right frequencies for headphone channels" },
+  hi: { "左耳頻率": "बाएँ कान की आवृत्ति", "右耳頻率": "दाएँ कान की आवृत्ति", "需使用耳機；左右聲道分別播放指定頻率。": "हेडफ़ोन का उपयोग करें; हर चैनल अपनी निर्धारित आवृत्ति बजाता है।", "耳機左右聲道的獨立頻率設定": "हेडफ़ोन चैनलों के लिए स्वतंत्र बाएँ/दाएँ आवृत्तियाँ" },
+  es: { "左耳頻率": "Frecuencia del oído izquierdo", "右耳頻率": "Frecuencia del oído derecho", "需使用耳機；左右聲道分別播放指定頻率。": "Use auriculares; cada canal reproduce su frecuencia asignada.", "耳機左右聲道的獨立頻率設定": "Frecuencias izquierda/derecha independientes para canales de auriculares" },
+  fr: { "左耳頻率": "Fréquence de l'oreille gauche", "右耳頻率": "Fréquence de l'oreille droite", "需使用耳機；左右聲道分別播放指定頻率。": "Utilisez un casque ; chaque canal lit sa fréquence attribuée.", "耳機左右聲道的獨立頻率設定": "Fréquences gauche/droite indépendantes pour les canaux du casque" },
+  ar: { "左耳頻率": "تردد الأذن اليسرى", "右耳頻率": "تردد الأذن اليمنى", "需使用耳機；左右聲道分別播放指定頻率。": "استخدم سماعات الرأس؛ تشغّل كل قناة ترددها المحدد.", "耳機左右聲道的獨立頻率設定": "ترددات مستقلة لليسار/اليمين لقنوات سماعات الرأس" },
+  ja: { "左耳頻率": "左耳の周波数", "右耳頻率": "右耳の周波数", "需使用耳機；左右聲道分別播放指定頻率。": "ヘッドホンを使用してください。各チャンネルで指定した周波数を再生します。", "耳機左右聲道的獨立頻率設定": "ヘッドホンの左右チャンネルに独立した周波数を設定" },
+  ko: { "左耳頻率": "왼쪽 귀 주파수", "右耳頻率": "오른쪽 귀 주파수", "需使用耳機；左右聲道分別播放指定頻率。": "헤드폰을 사용하세요. 각 채널이 지정한 주파수를 재생합니다.", "耳機左右聲道的獨立頻率設定": "헤드폰 좌우 채널의 독립 주파수 설정" },
+};
+
+Object.entries(hemisphericText).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
 
 const originalTextNodes = new WeakMap();
 
@@ -336,12 +354,16 @@ function setupPresetSorting() {
 function updateOutputs() {
   const beat = Number(nodes.beatFrequency.value);
   const carrier = Number(nodes.carrierFrequency.value);
+  const left = Number(nodes.leftFrequency.value);
+  const right = Number(nodes.rightFrequency.value);
   const volumePercent = Math.round((Number(nodes.volume.value) / 0.4) * 100);
 
   nodes.beatOutput.textContent = `${formatHz(beat)} Hz`;
   nodes.carrierOutput.textContent = `${formatHz(carrier)} Hz`;
+  nodes.leftOutput.textContent = `${formatHz(left)} Hz`;
+  nodes.rightOutput.textContent = `${formatHz(right)} Hz`;
   nodes.volumeOutput.textContent = `${volumePercent}%`;
-  nodes.beatValue.textContent = state.mode === "tone" ? formatHz(carrier) : formatHz(beat);
+  nodes.beatValue.textContent = state.mode === "tone" ? formatHz(carrier) : state.mode === "hemispheric" ? `${formatHz(left)} / ${formatHz(right)}` : formatHz(beat);
 
   if (state.audioContext && state.masterGain) {
     state.masterGain.gain.setTargetAtTime(Number(nodes.volume.value), state.audioContext.currentTime, 0.03);
@@ -364,10 +386,19 @@ function updatePresetLabel(presetKey) {
   setActiveButton(nodes.presets, "preset", presetKey);
 }
 
-function updateMode(mode) {
+function updateMode(mode, fromPreset = false) {
   state.mode = mode;
   setActiveButton(nodes.modes, "mode", mode);
-  nodes.beatFrequency.disabled = mode === "tone";
+  nodes.beatFrequency.disabled = mode === "tone" || mode === "hemispheric";
+  nodes.carrierFrequency.disabled = mode === "hemispheric";
+  nodes.hemisphericControls.hidden = mode !== "hemispheric";
+  nodes.hemisphericNote.hidden = mode !== "hemispheric";
+  if (mode === "hemispheric" && !fromPreset) {
+    state.currentPreset = "custom";
+    setActiveButton(nodes.presets, "preset", "");
+    nodes.bandName.textContent = "Hemispheric Synchronization";
+    nodes.bandDescription.textContent = translate("耳機左右聲道的獨立頻率設定");
+  }
   updateOutputs();
 
   if (state.playing) {
@@ -381,7 +412,7 @@ function applyPreset(presetKey) {
   nodes.beatFrequency.value = Math.min(preset.beat, Number(nodes.beatFrequency.max));
   nodes.carrierFrequency.value = preset.carrier;
   updatePresetLabel(presetKey);
-  updateMode(preset.mode);
+  updateMode(preset.mode, true);
 
   if (state.playing) {
     restartSound();
@@ -430,6 +461,22 @@ function playBinaural() {
 
   createOscillator(carrier, leftGain);
   createOscillator(carrier + beat, rightGain);
+}
+
+function playHemispheric() {
+  const context = state.audioContext;
+  const merger = trackNode(context.createChannelMerger(2));
+  const leftGain = trackNode(context.createGain());
+  const rightGain = trackNode(context.createGain());
+
+  leftGain.gain.value = 0.5;
+  rightGain.gain.value = 0.5;
+  leftGain.connect(merger, 0, 0);
+  rightGain.connect(merger, 0, 1);
+  merger.connect(state.masterGain);
+
+  createOscillator(Number(nodes.leftFrequency.value), leftGain);
+  createOscillator(Number(nodes.rightFrequency.value), rightGain);
 }
 
 function playPulse() {
@@ -483,6 +530,13 @@ function startTimer() {
   }, 1000);
 }
 
+function updatePlaybackButtons() {
+  nodes.playButton.classList.toggle("is-active", state.playing);
+  nodes.stopButton.classList.toggle("is-active", !state.playing);
+  nodes.playButton.setAttribute("aria-pressed", String(state.playing));
+  nodes.stopButton.setAttribute("aria-pressed", String(!state.playing));
+}
+
 function stopSound() {
   if (!state.playing && state.activeNodes.length === 0) return;
 
@@ -505,6 +559,7 @@ function stopSound() {
   nodes.statusPill.textContent = languages[nodes.languageSelect.value].stopped;
   nodes.statusPill.classList.remove("playing");
   nodes.visualizer.classList.remove("playing");
+  updatePlaybackButtons();
 }
 
 function startSound() {
@@ -515,6 +570,8 @@ function startSound() {
     playBinaural();
   } else if (state.mode === "pulse") {
     playPulse();
+  } else if (state.mode === "hemispheric") {
+    playHemispheric();
   } else {
     playTone();
   }
@@ -523,6 +580,7 @@ function startSound() {
   nodes.statusPill.textContent = languages[nodes.languageSelect.value].playing;
   nodes.statusPill.classList.add("playing");
   nodes.visualizer.classList.add("playing");
+  updatePlaybackButtons();
   startTimer();
 }
 
@@ -542,12 +600,12 @@ nodes.modes.forEach((button) => {
   button.addEventListener("click", () => updateMode(button.dataset.mode));
 });
 
-[nodes.beatFrequency, nodes.carrierFrequency, nodes.volume].forEach((input) => {
+[nodes.beatFrequency, nodes.carrierFrequency, nodes.leftFrequency, nodes.rightFrequency, nodes.volume].forEach((input) => {
   input.addEventListener("input", () => {
     state.currentPreset = "custom";
     setActiveButton(nodes.presets, "preset", "");
-    nodes.bandName.textContent = "Custom";
-    nodes.bandDescription.textContent = translate("自訂頻率組合");
+    nodes.bandName.textContent = state.mode === "hemispheric" ? "Hemispheric Synchronization" : "Custom";
+    nodes.bandDescription.textContent = translate(state.mode === "hemispheric" ? "耳機左右聲道的獨立頻率設定" : "自訂頻率組合");
     updateOutputs();
     restartSound();
   });
@@ -572,6 +630,7 @@ nodes.languageSelect.addEventListener("change", () => {
 
 window.addEventListener("pagehide", stopSound);
 
+updatePlaybackButtons();
 setupPresetSorting();
 applyPreset("alpha");
 translatePage("zh-Hant");

@@ -84,6 +84,20 @@
               <output id="carrierOutput" for="carrierFrequency">440 Hz</output>
             </label>
 
+            <div id="hemisphericControls" hidden>
+              <label class="field">
+                <span>左耳頻率</span>
+                <input id="leftFrequency" type="range" min="100" max="1400" value="100" step="1" />
+                <output id="leftOutput" for="leftFrequency">100 Hz</output>
+              </label>
+
+              <label class="field">
+                <span>右耳頻率</span>
+                <input id="rightFrequency" type="range" min="100" max="1400" value="104" step="1" />
+                <output id="rightOutput" for="rightFrequency">104 Hz</output>
+              </label>
+            </div>
+
             <label class="field">
               <span>音量</span>
               <input id="volume" type="range" min="0" max="0.4" value="0.08" step="0.01" />
@@ -107,6 +121,7 @@
               <button class="segment active" type="button" data-mode="binaural">雙耳節拍</button>
               <button class="segment" type="button" data-mode="pulse">脈衝調制</button>
               <button class="segment" type="button" data-mode="tone">純音</button>
+              <button class="segment" type="button" data-mode="hemispheric">Hemispheric Synchronization</button>
             </div>
 
             <div class="visualizer" aria-hidden="true">
@@ -118,6 +133,7 @@
             <p class="note">
               從低音量開始；若有耳鳴、不適或頭痛請立即停止。駕駛、騎車或需要察覺環境聲時，請勿戴耳機使用。卡片僅為使用情境，不代表誘發腦波或改善能力、疾病或睡眠。
             </p>
+            <p id="hemisphericNote" class="note" hidden>需使用耳機；左右聲道分別播放指定頻率。</p>
 
             <div class="session-controls">
               <label class="field compact-field">
