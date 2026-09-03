@@ -74,15 +74,15 @@ const nodes = {
 };
 
 const languages = {
-  "zh-Hant": { title: "雙耳節拍與純音體驗", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
-  en: { title: "Binaural Beats & Pure Tone Experience", play: "Play", stop: "Stop", stopped: "Stopped", playing: "Playing" },
-  hi: { title: "बाइनॉरल बीट्स और शुद्ध टोन अनुभव", play: "चलाएँ", stop: "रोकें", stopped: "रुका हुआ", playing: "चल रहा है" },
-  es: { title: "Experiencia de ritmos binaurales y tonos puros", play: "Reproducir", stop: "Detener", stopped: "Detenido", playing: "Reproduciendo" },
-  fr: { title: "Expérience de battements binauraux et sons purs", play: "Lire", stop: "Arrêter", stopped: "Arrêté", playing: "Lecture" },
-  ar: { title: "تجربة الإيقاعات الثنائية والنغمات النقية", play: "تشغيل", stop: "إيقاف", stopped: "متوقف", playing: "قيد التشغيل" },
-  "zh-CN": { title: "双耳节拍与纯音体验", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
-  ja: { title: "バイノーラルビートと純音の体験", play: "再生", stop: "停止", stopped: "停止中", playing: "再生中" },
-  ko: { title: "바이노럴 비트와 순음 체험", play: "재생", stop: "정지", stopped: "정지됨", playing: "재생 중" },
+  "zh-Hant": { title: "高頻音實驗室", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
+  en: { title: "高頻音實驗室", play: "Play", stop: "Stop", stopped: "Stopped", playing: "Playing" },
+  hi: { title: "高頻音實驗室", play: "चलाएँ", stop: "रोकें", stopped: "रुका हुआ", playing: "चल रहा है" },
+  es: { title: "高頻音實驗室", play: "Reproducir", stop: "Detener", stopped: "Detenido", playing: "Reproduciendo" },
+  fr: { title: "高頻音實驗室", play: "Lire", stop: "Arrêter", stopped: "Arrêté", playing: "Lecture" },
+  ar: { title: "高頻音實驗室", play: "تشغيل", stop: "إيقاف", stopped: "متوقف", playing: "قيد التشغيل" },
+  "zh-CN": { title: "高頻音實驗室", play: "播放", stop: "停止", stopped: "已停止", playing: "播放中" },
+  ja: { title: "高頻音實驗室", play: "再生", stop: "停止", stopped: "停止中", playing: "再生中" },
+  ko: { title: "高頻音實驗室", play: "재생", stop: "정지", stopped: "정지됨", playing: "재생 중" },
 };
 
 const sortLabels = {
