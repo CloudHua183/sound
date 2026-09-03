@@ -226,6 +226,100 @@ const hemisphericText = {
 
 Object.entries(hemisphericText).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
 
+const waveformGuideText = {
+  "zh-CN": {
+    "波形說明": "波形说明",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "最纯、最柔和；几乎只有基频，适合作为低刺激起点。",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "比正弦波明亮一些，仍然温和；带有少量奇次泛音。",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "明显、尖锐，像电子提示音；奇次泛音很多，刺激感较强。",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "最明亮、最密集，带有嗡鸣感；连续泛音很多，较容易刺耳。",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "波形会改变泛音结构与听感，不改变频率或左右声道设置。使用 Square 或 Sawtooth 时，请先降低音量。"
+  },
+  en: {
+    "波形說明": "Waveform guide",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "Purest and softest; almost only the fundamental, suitable as a low-stimulation starting point.",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "A little brighter than sine while still gentle; contains a small amount of odd harmonics.",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "Distinct and sharp like an electronic cue; many odd harmonics make it feel more intense.",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "Brightest and densest with a buzz; many continuous harmonics can sound harsh more easily.",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "Waveform changes overtone structure and character, not frequency or left/right channel settings. Lower the volume first with Square or Sawtooth."
+  },
+  hi: {
+    "波形說明": "तरंगरूप मार्गदर्शिका",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "सबसे शुद्ध और कोमल; लगभग केवल मूल आवृत्ति, कम-उत्तेजना वाले आरंभ के लिए उपयुक्त।",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "साइन से थोड़ा अधिक चमकीला, फिर भी कोमल; इसमें थोड़ी विषम हार्मोनिक्स होती हैं।",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "स्पष्ट और तीखा, इलेक्ट्रॉनिक संकेत जैसा; अधिक विषम हार्मोनिक्स इसे अधिक तीव्र बनाती हैं।",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "सबसे चमकीला और घना, गुनगुनाहट के साथ; बहुत-सी हार्मोनिक्स इसे आसानी से कठोर बना सकती हैं।",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "तरंगरूप हार्मोनिक संरचना और सुनने का अनुभव बदलता है, आवृत्ति या बाएँ/दाएँ चैनल सेटिंग नहीं। Square या Sawtooth में पहले आवाज़ कम करें।"
+  },
+  es: {
+    "波形說明": "Guía de formas de onda",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "La más pura y suave; casi solo la frecuencia fundamental, adecuada como punto de partida de baja estimulación.",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "Un poco más brillante que la senoide y aún suave; contiene pocos armónicos impares.",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "Marcada y aguda, como una señal electrónica; muchos armónicos impares la hacen más intensa.",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "La más brillante y densa, con un zumbido; muchos armónicos continuos pueden resultar ásperos.",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "La forma de onda cambia los armónicos y el carácter, no la frecuencia ni los canales izquierdo/derecho. Baje primero el volumen con Square o Sawtooth."
+  },
+  fr: {
+    "波形說明": "Guide des formes d’onde",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "La plus pure et la plus douce ; presque uniquement la fréquence fondamentale, adaptée à un départ peu stimulant.",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "Un peu plus brillante que la sinusoïde tout en restant douce ; contient quelques harmoniques impaires.",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "Nette et aiguë, comme un signal électronique ; ses nombreuses harmoniques impaires la rendent plus intense.",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "La plus brillante et la plus dense, avec un bourdonnement ; ses nombreuses harmoniques peuvent plus facilement être agressives.",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "La forme d’onde modifie les harmoniques et le caractère, pas la fréquence ni les réglages gauche/droite. Réduisez d’abord le volume avec Square ou Sawtooth."
+  },
+  ar: {
+    "波形說明": "دليل شكل الموجة",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "الأكثر نقاءً ولطفًا؛ يكاد يقتصر على التردد الأساسي، ومناسب كبداية منخفضة التحفيز.",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "أكثر سطوعًا قليلًا من الموجة الجيبية مع بقائه لطيفًا؛ يتضمن قدرًا صغيرًا من التوافقيات الفردية.",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "واضح وحاد كتنبيه إلكتروني؛ كثرة التوافقيات الفردية تجعله أشد إحساسًا.",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "الأكثر سطوعًا وكثافة مع طنين؛ كثرة التوافقيات قد تجعله حادًا على الأذن بسهولة.",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "يغيّر شكل الموجة بنية التوافقيات وطابع الصوت، لا التردد أو إعدادات القناتين اليمنى واليسرى. اخفض مستوى الصوت أولًا مع Square أو Sawtooth."
+  },
+  ja: {
+    "波形說明": "波形ガイド",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "最も純粋で柔らかく、ほぼ基本周波数だけです。低刺激で始めるのに適しています。",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "サイン波より少し明るく、なお穏やかです。少量の奇数次倍音を含みます。",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "電子的な通知音のように明瞭で鋭く、多くの奇数次倍音により刺激感が強めです。",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "最も明るく密度が高く、うなりを伴います。多くの連続した倍音により耳に強く感じやすいです。",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "波形は倍音構造と聴感を変えますが、周波数や左右チャンネル設定は変えません。Square または Sawtooth では、まず音量を下げてください。"
+  },
+  ko: {
+    "波形說明": "파형 안내",
+    "最純、最柔和；幾乎只有基頻，適合作為低刺激起點。": "가장 순수하고 부드러우며, 거의 기본 주파수만 포함합니다. 낮은 자극으로 시작하기에 적합합니다.",
+    "比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。": "사인파보다 조금 더 밝지만 여전히 부드럽고, 적은 양의 홀수 배음을 포함합니다.",
+    "明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。": "전자 알림음처럼 뚜렷하고 날카로우며, 많은 홀수 배음으로 더 강하게 느껴집니다.",
+    "最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。": "가장 밝고 밀도가 높으며 웅웅거림이 있습니다. 많은 연속 배음 때문에 쉽게 거칠게 들릴 수 있습니다.",
+    "波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。": "파형은 배음 구조와 청감을 바꾸지만 주파수나 좌우 채널 설정은 바꾸지 않습니다. Square 또는 Sawtooth에서는 먼저 볼륨을 낮추세요."
+  },
+};
+
+Object.entries(waveformGuideText).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
+
+const hemiGuideText = {
+  "zh-CN": {
+    "雙腦同步": "双脑同步", "左耳頻率數值": "左耳频率数值", "右耳頻率數值": "右耳频率数值", "雙腦同步與雙耳節拍": "双脑同步与双耳节拍",
+    "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® 是 Monroe Institute 脉络中的音频技术名称；本工具不是 Hemi-Sync® 产品、服务或授权技术。",
+    "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "本模式通过耳机将 100 Hz 纯音送至右耳、104 Hz 纯音送至左耳；4 Hz 频差可形成双耳节拍感。",
+    "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz 落在常见 Theta 标示范围（4–8 Hz），但双耳节拍是否能使脑波同步或带来放松、专注、学习、记忆、睡眠或健康效果，研究结果仍混合，非医疗或效果保证。",
+    "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute：Hemi-Sync 与声音技术沿革", "雙耳節拍腦波同步系統性回顧": "双耳节拍脑波同步系统性回顾"
+  },
+  en: {
+    "雙腦同步": "Hemispheric synchronization", "左耳頻率數值": "Left-ear frequency value", "右耳頻率數值": "Right-ear frequency value", "雙腦同步與雙耳節拍": "Hemispheric synchronization and binaural beats",
+    "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® is an audio-technology name in the Monroe Institute context; this tool is not a Hemi-Sync® product, service, or licensed technology.",
+    "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "With headphones, this mode sends a 100 Hz pure tone to the right ear and a 104 Hz tone to the left; the 4 Hz difference can create a binaural-beat percept.",
+    "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz falls in the commonly labelled theta range (4–8 Hz), but evidence that binaural beats synchronize brainwaves or improve relaxation, focus, learning, memory, sleep, or health remains mixed. This is not medical or outcome assurance.",
+    "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute: Hemi-Sync and sound-technology history", "雙耳節拍腦波同步系統性回顧": "Systematic review of binaural beats and brainwave synchronization"
+  },
+  hi: { "雙腦同步": "गोलार्ध समकालिकता", "左耳頻率數值": "बाएँ कान की आवृत्ति मान", "右耳頻率數值": "दाएँ कान की आवृत्ति मान", "雙腦同步與雙耳節拍": "गोलार्ध समकालिकता और बाइनॉरल बीट्स", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® Monroe Institute के संदर्भ में एक ऑडियो-प्रौद्योगिकी नाम है; यह उपकरण Hemi-Sync® उत्पाद, सेवा या लाइसेंस प्राप्त तकनीक नहीं है।", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "हेडफ़ोन के साथ यह मोड दाएँ कान में 100 Hz और बाएँ कान में 104 Hz शुद्ध टोन भेजता है; 4 Hz का अंतर बाइनॉरल बीट का आभास दे सकता है।", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz सामान्य थीटा सीमा (4–8 Hz) में है, लेकिन बाइनॉरल बीट्स से मस्तिष्क तरंगों का समकालिक होना या आराम, ध्यान, सीखने, स्मृति, नींद या स्वास्थ्य में लाभ के प्रमाण मिश्रित हैं। यह चिकित्सा या परिणाम की गारंटी नहीं है।", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute: Hemi-Sync और ध्वनि-तकनीक इतिहास", "雙耳節拍腦波同步系統性回顧": "बाइनॉरल बीट्स और मस्तिष्क तरंगों की व्यवस्थित समीक्षा" },
+  es: { "雙腦同步": "Sincronización hemisférica", "左耳頻率數值": "Valor de frecuencia del oído izquierdo", "右耳頻率數值": "Valor de frecuencia del oído derecho", "雙腦同步與雙耳節拍": "Sincronización hemisférica y ritmos binaurales", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® es un nombre de tecnología de audio en el contexto del Monroe Institute; esta herramienta no es un producto, servicio ni tecnología autorizada de Hemi-Sync®.", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "Con auriculares, este modo envía un tono puro de 100 Hz al oído derecho y uno de 104 Hz al izquierdo; la diferencia de 4 Hz puede crear la percepción de un ritmo binaural.", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz está en el rango theta habitualmente etiquetado (4–8 Hz), pero la evidencia sobre sincronización cerebral o beneficios para relajación, concentración, aprendizaje, memoria, sueño o salud sigue siendo mixta. No es una garantía médica ni de resultados.", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute: historia de Hemi-Sync y tecnología de sonido", "雙耳節拍腦波同步系統性回顧": "Revisión sistemática sobre ritmos binaurales y sincronización cerebral" },
+  fr: { "雙腦同步": "Synchronisation hémisphérique", "左耳頻率數值": "Valeur de fréquence de l’oreille gauche", "右耳頻率數值": "Valeur de fréquence de l’oreille droite", "雙腦同步與雙耳節拍": "Synchronisation hémisphérique et battements binauraux", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® est un nom de technologie audio dans le contexte du Monroe Institute ; cet outil n’est ni un produit, ni un service, ni une technologie autorisée Hemi-Sync®.", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "Avec un casque, ce mode envoie un son pur de 100 Hz à l’oreille droite et de 104 Hz à l’oreille gauche ; l’écart de 4 Hz peut créer la perception d’un battement binaural.", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz se situe dans la plage thêta couramment indiquée (4–8 Hz), mais les données sur la synchronisation cérébrale ou les effets sur la détente, l’attention, l’apprentissage, la mémoire, le sommeil ou la santé restent mitigées. Il ne s’agit pas d’une garantie médicale ou de résultat.", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute : histoire de Hemi-Sync et des technologies sonores", "雙耳節拍腦波同步系統性回顧": "Revue systématique des battements binauraux et de la synchronisation cérébrale" },
+  ar: { "雙腦同步": "التزامن النصفي", "左耳頻率數值": "قيمة تردد الأذن اليسرى", "右耳頻率數值": "قيمة تردد الأذن اليمنى", "雙腦同步與雙耳節拍": "التزامن النصفي والنبضات ثنائية الأذن", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® اسم لتقنية صوتية في سياق Monroe Institute؛ هذه الأداة ليست منتج Hemi-Sync® أو خدمته أو تقنية مرخصة منه.", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "باستخدام سماعات الرأس، يرسل هذا الوضع نغمة نقية 100 هرتز إلى الأذن اليمنى و104 هرتز إلى اليسرى؛ وقد يصنع فرق 4 هرتز إدراكًا لنبضة ثنائية الأذن.", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "يقع 4 هرتز ضمن نطاق ثيتا الشائع (4–8 هرتز)، لكن الأدلة على مزامنة موجات الدماغ أو تحسين الاسترخاء أو التركيز أو التعلم أو الذاكرة أو النوم أو الصحة ما تزال متباينة. هذا ليس ضمانًا طبيًا أو للنتائج.", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute: تاريخ Hemi-Sync وتقنية الصوت", "雙耳節拍腦波同步系統性回顧": "مراجعة منهجية للنبضات ثنائية الأذن وتزامن موجات الدماغ" },
+  ja: { "雙腦同步": "両半球同期", "左耳頻率數值": "左耳周波数の数値", "右耳頻率數值": "右耳周波数の数値", "雙腦同步與雙耳節拍": "両半球同期とバイノーラルビート", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync® はMonroe Instituteの文脈における音響技術名です。このツールはHemi-Sync®の製品、サービス、またはライセンス技術ではありません。", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "ヘッドホン使用時、このモードは右耳に100 Hz、左耳に104 Hzの純音を送ります。4 Hzの差によりバイノーラルビートの知覚が生じることがあります。", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hzは一般的なシータ帯域（4–8 Hz）に入りますが、脳波同期やリラックス、集中、学習、記憶、睡眠、健康への効果に関する研究結果は一貫していません。医療的または結果の保証ではありません。", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute：Hemi-Syncと音響技術の沿革", "雙耳節拍腦波同步系統性回顧": "バイノーラルビートと脳波同期の系統的レビュー" },
+  ko: { "雙腦同步": "반구 동기화", "左耳頻率數值": "왼쪽 귀 주파수 값", "右耳頻率數值": "오른쪽 귀 주파수 값", "雙腦同步與雙耳節拍": "반구 동기화와 바이노럴 비트", "Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。": "Hemi-Sync®는 Monroe Institute 맥락의 오디오 기술 명칭입니다. 이 도구는 Hemi-Sync® 제품, 서비스 또는 라이선스 기술이 아닙니다.", "本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。": "헤드폰 사용 시 이 모드는 오른쪽 귀에 100 Hz 순음을, 왼쪽 귀에 104 Hz 순음을 보냅니다. 4 Hz 차이는 바이노럴 비트 지각을 만들 수 있습니다.", "4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。": "4 Hz는 일반적으로 표기되는 세타 범위(4–8 Hz)에 속하지만, 뇌파 동기화나 이완, 집중, 학습, 기억, 수면, 건강 효과에 관한 연구 결과는 엇갈립니다. 의료적 또는 결과 보장이 아닙니다.", "Monroe Institute：Hemi-Sync 與聲音技術沿革": "Monroe Institute: Hemi-Sync 및 음향 기술 역사", "雙耳節拍腦波同步系統性回顧": "바이노럴 비트와 뇌파 동기화 체계적 문헌고찰" },
+};
+
+Object.entries(hemiGuideText).forEach(([language, dictionary]) => Object.assign(localizedText[language], dictionary));
+
 const originalTextNodes = new WeakMap();
 
 function translate(source) {
@@ -248,8 +342,12 @@ function translatePage(languageKey) {
   document.querySelector(".player").setAttribute("aria-label", translate("模式"));
   document.querySelector(".preset-grid").setAttribute("aria-label", languages[languageKey].title);
   document.querySelector(".segments").setAttribute("aria-label", translate("模式"));
+  document.querySelector(".waveform-guide").setAttribute("aria-label", translate("波形說明"));
+  document.querySelector(".hemi-guide").setAttribute("aria-label", translate("雙腦同步與雙耳節拍"));
   document.querySelector(".research-panel").setAttribute("aria-label", translate("研究、安全與使用界限"));
   nodes.languageSelect.setAttribute("aria-label", translate("語言"));
+  nodes.leftOutput.setAttribute("aria-label", translate("左耳頻率數值"));
+  nodes.rightOutput.setAttribute("aria-label", translate("右耳頻率數值"));
 }
 
 const state = {
@@ -360,8 +458,8 @@ function updateOutputs() {
 
   nodes.beatOutput.textContent = `${formatHz(beat)} Hz`;
   nodes.carrierOutput.textContent = `${formatHz(carrier)} Hz`;
-  nodes.leftOutput.textContent = `${formatHz(left)} Hz`;
-  nodes.rightOutput.textContent = `${formatHz(right)} Hz`;
+  nodes.leftOutput.value = formatHz(left);
+  nodes.rightOutput.value = formatHz(right);
   nodes.volumeOutput.textContent = `${volumePercent}%`;
   nodes.beatValue.textContent = state.mode === "tone" ? formatHz(carrier) : state.mode === "hemispheric" ? `${formatHz(left)} / ${formatHz(right)}` : formatHz(beat);
 
@@ -396,7 +494,7 @@ function updateMode(mode, fromPreset = false) {
   if (mode === "hemispheric" && !fromPreset) {
     state.currentPreset = "custom";
     setActiveButton(nodes.presets, "preset", "");
-    nodes.bandName.textContent = "Hemispheric Synchronization";
+    nodes.bandName.textContent = translate("雙腦同步");
     nodes.bandDescription.textContent = translate("耳機左右聲道的獨立頻率設定");
   }
   updateOutputs();
@@ -600,15 +698,27 @@ nodes.modes.forEach((button) => {
   button.addEventListener("click", () => updateMode(button.dataset.mode));
 });
 
+function updateCustomSound() {
+  state.currentPreset = "custom";
+  setActiveButton(nodes.presets, "preset", "");
+  nodes.bandName.textContent = state.mode === "hemispheric" ? translate("雙腦同步") : "Custom";
+  nodes.bandDescription.textContent = translate(state.mode === "hemispheric" ? "耳機左右聲道的獨立頻率設定" : "自訂頻率組合");
+  updateOutputs();
+  restartSound();
+}
+
 [nodes.beatFrequency, nodes.carrierFrequency, nodes.leftFrequency, nodes.rightFrequency, nodes.volume].forEach((input) => {
+  input.addEventListener("input", updateCustomSound);
+});
+
+[[nodes.leftOutput, nodes.leftFrequency], [nodes.rightOutput, nodes.rightFrequency]].forEach(([input, slider]) => {
   input.addEventListener("input", () => {
-    state.currentPreset = "custom";
-    setActiveButton(nodes.presets, "preset", "");
-    nodes.bandName.textContent = state.mode === "hemispheric" ? "Hemispheric Synchronization" : "Custom";
-    nodes.bandDescription.textContent = translate(state.mode === "hemispheric" ? "耳機左右聲道的獨立頻率設定" : "自訂頻率組合");
-    updateOutputs();
-    restartSound();
+    const value = Number(input.value);
+    if (!Number.isFinite(value)) return;
+    slider.value = Math.min(Number(slider.max), Math.max(Number(slider.min), value));
+    updateCustomSound();
   });
+  input.addEventListener("change", updateOutputs);
 });
 
 nodes.waveform.addEventListener("change", restartSound);
@@ -625,6 +735,7 @@ nodes.languageSelect.addEventListener("change", () => {
   nodes.playButton.textContent = language.play;
   nodes.stopButton.textContent = language.stop;
   nodes.statusPill.textContent = state.playing ? language.playing : language.stopped;
+  if (state.mode === "hemispheric") nodes.bandName.textContent = translate("雙腦同步");
   updateSortControls();
 });
 

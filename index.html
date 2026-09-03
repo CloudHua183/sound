@@ -87,14 +87,14 @@
             <div id="hemisphericControls" hidden>
               <label class="field">
                 <span>左耳頻率</span>
-                <input id="leftFrequency" type="range" min="100" max="1400" value="100" step="1" />
-                <output id="leftOutput" for="leftFrequency">100 Hz</output>
+                <input id="leftFrequency" type="range" min="100" max="1400" value="104" step="1" />
+                <input id="leftOutput" class="frequency-value" type="number" min="100" max="1400" value="104" step="1" inputmode="numeric" aria-label="左耳頻率數值" />
               </label>
 
               <label class="field">
                 <span>右耳頻率</span>
-                <input id="rightFrequency" type="range" min="100" max="1400" value="104" step="1" />
-                <output id="rightOutput" for="rightFrequency">104 Hz</output>
+                <input id="rightFrequency" type="range" min="100" max="1400" value="100" step="1" />
+                <input id="rightOutput" class="frequency-value" type="number" min="100" max="1400" value="100" step="1" inputmode="numeric" aria-label="右耳頻率數值" />
               </label>
             </div>
 
@@ -113,6 +113,17 @@
                 <option value="sawtooth">Sawtooth</option>
               </select>
             </label>
+
+            <aside class="waveform-guide" aria-label="波形說明">
+              <h3>波形說明</h3>
+              <ul>
+                <li><strong>Sine</strong>：最純、最柔和；幾乎只有基頻，適合作為低刺激起點。</li>
+                <li><strong>Triangle</strong>：比正弦波明亮一些，仍然溫和；帶有少量奇次泛音。</li>
+                <li><strong>Square</strong>：明顯、尖銳，像電子提示音；奇次泛音很多，刺激感較強。</li>
+                <li><strong>Sawtooth</strong>：最明亮、最密集，帶有嗡鳴感；連續泛音很多，較容易刺耳。</li>
+              </ul>
+              <p>波形會改變泛音結構與聽感，不改變頻率或左右聲道設定。使用 Square 或 Sawtooth 時，請先降低音量。</p>
+            </aside>
           </div>
 
           <div class="panel">
@@ -121,7 +132,7 @@
               <button class="segment active" type="button" data-mode="binaural">雙耳節拍</button>
               <button class="segment" type="button" data-mode="pulse">脈衝調制</button>
               <button class="segment" type="button" data-mode="tone">純音</button>
-              <button class="segment" type="button" data-mode="hemispheric">Hemispheric Synchronization</button>
+              <button class="segment" type="button" data-mode="hemispheric">雙腦同步</button>
             </div>
 
             <div class="visualizer" aria-hidden="true">
@@ -161,6 +172,13 @@
             <li><a href="https://pubmed.ncbi.nlm.nih.gov/38458383/" target="_blank" rel="noreferrer">Chee et al. (2024)</a>：研究結果混合，仍需更高品質研究。</li>
           </ul>
           <p><strong>後續探索：</strong>藍／紫噪音可作為背景遮蔽的實驗方向，不表示療效或功能承諾。</p>
+          <section class="hemi-guide" aria-label="雙腦同步與雙耳節拍">
+            <h3>雙腦同步與雙耳節拍</h3>
+            <p>Hemi-Sync® 是 Monroe Institute 脈絡中的音訊技術名稱；本工具不是 Hemi-Sync® 產品、服務或授權技術。</p>
+            <p>本模式透過耳機將 100 Hz 純音送至右耳、104 Hz 純音送至左耳；4 Hz 頻差可形成雙耳節拍感。</p>
+            <p>4 Hz 落在常見 Theta 標示範圍（4–8 Hz），但雙耳節拍是否能使腦波同步或帶來放鬆、專注、學習、記憶、睡眠或健康效果，研究結果仍混合，非醫療或效果保證。</p>
+            <p><a href="https://www.monroeinstitute.org/pages/the-history-of-sound-at-the-monroe-institute" target="_blank" rel="noreferrer">Monroe Institute：Hemi-Sync 與聲音技術沿革</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/37205669/" target="_blank" rel="noreferrer">雙耳節拍腦波同步系統性回顧</a></p>
+          </section>
         </section>
 
         <footer class="app-footer">
