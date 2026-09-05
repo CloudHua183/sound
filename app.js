@@ -359,6 +359,8 @@ const state = {
   playing: false,
   timerId: null,
   endsAt: null,
+  wakeLock: null,
+  wakeLockRequest: null,
 };
 
 function formatHz(value) {
@@ -635,6 +637,39 @@ function updatePlaybackButtons() {
   nodes.stopButton.setAttribute("aria-pressed", String(!state.playing));
 }
 
+async function requestWakeLock() {
+  if (!("wakeLock" in navigator) || document.visibilityState !== "visible" || state.wakeLock || state.wakeLockRequest) return;
+
+  try {
+    state.wakeLockRequest = navigator.wakeLock.request("screen");
+    const wakeLock = await state.wakeLockRequest;
+    if (!state.playing) {
+      await wakeLock.release();
+      return;
+    }
+    state.wakeLock = wakeLock;
+    wakeLock.addEventListener("release", () => {
+      if (state.wakeLock === wakeLock) state.wakeLock = null;
+    });
+  } catch {
+    // The browser or operating system may deny wake locks in power-saving states.
+  } finally {
+    state.wakeLockRequest = null;
+  }
+}
+
+async function releaseWakeLock() {
+  const wakeLock = state.wakeLock;
+  state.wakeLock = null;
+  if (!wakeLock) return;
+
+  try {
+    await wakeLock.release();
+  } catch {
+    // The lock may already have been released by the system.
+  }
+}
+
 function stopSound() {
   if (!state.playing && state.activeNodes.length === 0) return;
 
@@ -653,6 +688,7 @@ function stopSound() {
 
   state.activeNodes = [];
   state.playing = false;
+  releaseWakeLock();
   clearTimer();
   nodes.statusPill.textContent = languages[nodes.languageSelect.value].stopped;
   nodes.statusPill.classList.remove("playing");
@@ -680,6 +716,7 @@ function startSound() {
   nodes.visualizer.classList.add("playing");
   updatePlaybackButtons();
   startTimer();
+  requestWakeLock();
 }
 
 function restartSound() {
@@ -737,6 +774,11 @@ nodes.languageSelect.addEventListener("change", () => {
   nodes.statusPill.textContent = state.playing ? language.playing : language.stopped;
   if (state.mode === "hemispheric") nodes.bandName.textContent = translate("雙腦同步");
   updateSortControls();
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && state.playing) requestWakeLock();
+  else releaseWakeLock();
 });
 
 window.addEventListener("pagehide", stopSound);
