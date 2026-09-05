@@ -63,7 +63,7 @@
           </button>
           <button class="preset" type="button" data-preset="focus">
             <span>Pure Tone</span>
-            <strong>1200 Hz</strong>
+            <strong>600 Hz</strong>
             <small>單純音色及耳機／左右聲道測試</small>
           </button>
         </section>
@@ -80,21 +80,21 @@
 
             <label class="field">
               <span>載波音高</span>
-              <input id="carrierFrequency" type="range" min="160" max="1400" value="440" step="1" />
+              <input id="carrierFrequency" type="range" min="0" max="600" value="440" step="1" />
               <output id="carrierOutput" for="carrierFrequency">440 Hz</output>
             </label>
 
             <div id="hemisphericControls" hidden>
               <label class="field">
                 <span>左耳頻率</span>
-                <input id="leftFrequency" type="range" min="100" max="1400" value="104" step="1" />
-                <input id="leftOutput" class="frequency-value" type="number" min="100" max="1400" value="104" step="1" inputmode="numeric" aria-label="左耳頻率數值" />
+                <input id="leftFrequency" type="range" min="0" max="200" value="104" step="1" />
+                <input id="leftOutput" class="frequency-value" type="number" min="0" max="200" value="104" step="1" inputmode="numeric" aria-label="左耳頻率數值" />
               </label>
 
               <label class="field">
                 <span>右耳頻率</span>
-                <input id="rightFrequency" type="range" min="100" max="1400" value="100" step="1" />
-                <input id="rightOutput" class="frequency-value" type="number" min="100" max="1400" value="100" step="1" inputmode="numeric" aria-label="右耳頻率數值" />
+                <input id="rightFrequency" type="range" min="0" max="200" value="100" step="1" />
+                <input id="rightOutput" class="frequency-value" type="number" min="0" max="200" value="100" step="1" inputmode="numeric" aria-label="右耳頻率數值" />
               </label>
             </div>
 

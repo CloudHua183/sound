@@ -16,7 +16,7 @@ const presets = {
   gamma: {
     name: "Gamma",
     beat: 40,
-    carrier: 640,
+    carrier: 600,
     mode: "binaural",
     description: "投入任務前的短暫高節奏暖身，適合創作啟動與思緒切換。",
   },
@@ -36,8 +36,8 @@ const presets = {
   },
   focus: {
     name: "Pure Tone",
-    beat: 1200,
-    carrier: 1200,
+    beat: 600,
+    carrier: 600,
     mode: "tone",
     description: "單純音色及耳機／左右聲道測試",
   },
