@@ -553,8 +553,8 @@ function playBinaural() {
   const leftGain = trackNode(context.createGain());
   const rightGain = trackNode(context.createGain());
 
-  leftGain.gain.value = 0.5;
-  rightGain.gain.value = 0.5;
+  leftGain.gain.value = 1;
+  rightGain.gain.value = 1;
   leftGain.connect(merger, 0, 0);
   rightGain.connect(merger, 0, 1);
   merger.connect(state.masterGain);
@@ -569,8 +569,8 @@ function playHemispheric() {
   const leftGain = trackNode(context.createGain());
   const rightGain = trackNode(context.createGain());
 
-  leftGain.gain.value = 0.5;
-  rightGain.gain.value = 0.5;
+  leftGain.gain.value = 1;
+  rightGain.gain.value = 1;
   leftGain.connect(merger, 0, 0);
   rightGain.connect(merger, 0, 1);
   merger.connect(state.masterGain);
